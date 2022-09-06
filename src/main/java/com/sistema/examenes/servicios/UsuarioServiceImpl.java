@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sistema.examenes.entidades.Usuario;
 import com.sistema.examenes.entidades.UsuarioRol;
-import com.sistema.examenes.servicios.UsuarioService;
+//import com.sistema.examenes.servicios.UsuarioService;
 import com.sistema.examenes.repositorios.RolRepository;
 import com.sistema.examenes.repositorios.UsuarioRepository;
 
@@ -35,6 +35,17 @@ public class UsuarioServiceImpl implements UsuarioService{
 			usuarioLocal = usuarioRepository.save(usuario);
 		}
 		return usuarioLocal;
+	}
+
+	@Override
+	public Usuario obtenerUsuario(String username) {
+		return usuarioRepository.findByUsername(username);
+	}
+
+	@Override
+	public void eliminarUsuario(Long usuarioId) {
+		usuarioRepository.deleteById(usuarioId);
+		
 	}
 	
 }
