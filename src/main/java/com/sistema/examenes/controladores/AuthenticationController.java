@@ -20,6 +20,7 @@ import com.sistema.examenes.configuraciones.JwtUtils;
 import com.sistema.examenes.entidades.JwtRequest;
 import com.sistema.examenes.entidades.JwtResponse;
 import com.sistema.examenes.entidades.Usuario;
+import com.sistema.examenes.excepciones.UsuarioNotFoundException;
 import com.sistema.examenes.servicios.Impl.UserDetailsServiceImpl;
 
 @RestController
@@ -39,7 +40,7 @@ public class AuthenticationController {
 	public ResponseEntity<?> generarToken(@RequestBody JwtRequest jwtRequest) throws Exception {
 		try {
 			autenticar(jwtRequest.getUsername(),jwtRequest.getPassword());
-		} catch(Exception exception) {
+		} catch(UsuarioNotFoundException exception) {
 			exception.printStackTrace();
 			throw new Exception("Usuario no encontrado");
 		}

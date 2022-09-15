@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.sistema.examenes.entidades.Usuario;
 import com.sistema.examenes.entidades.Rol;
 import com.sistema.examenes.entidades.UsuarioRol;
+import com.sistema.examenes.excepciones.UsuarioFoundException;
 import com.sistema.examenes.servicios.UsuarioService;
 
 @SpringBootApplication
@@ -29,7 +30,9 @@ public class SistemaExamenesBackendApplication implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
+	
 		
+	try {
 	Usuario usuario = new Usuario();	
 	
 	usuario.setNombre("arturo");
@@ -52,6 +55,9 @@ public class SistemaExamenesBackendApplication implements CommandLineRunner{
 	
 	Usuario usuarioGuardado = usuarioService.guardarUsuario(usuario, usuarioRoles);
 	System.out.println(usuarioGuardado.getUsername());
+	} catch (UsuarioFoundException exception) {
+		exception.printStackTrace();
+	}
 	}
 	
 	
