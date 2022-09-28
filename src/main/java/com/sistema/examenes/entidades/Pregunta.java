@@ -15,7 +15,7 @@ public class Pregunta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long preguntasId;
+	private Long preguntaId;
 	
 	@Column(length = 5000)
 	private String contenido;
@@ -29,12 +29,12 @@ public class Pregunta {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Examen examen;
 
-	public Long getPreguntasId() {
-		return preguntasId;
+	public Long getPreguntaId() {
+		return preguntaId;
 	}
 
-	public void setPreguntasId(Long preguntasId) {
-		this.preguntasId = preguntasId;
+	public void setPreguntaId(Long preguntaId) {
+		this.preguntaId = preguntaId;
 	}
 
 	public String getContenido() {
